@@ -1,0 +1,6 @@
+[submodule "src/pb/web"]
+	path = src/pb/web
+	url = git://github.com/hoisie/web.git
+[submodule "src/pb/mustache"]
+	path = src/pb/mustache
+	url = git://github.com/hoisie/mustache.git
