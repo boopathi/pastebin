@@ -6,12 +6,8 @@ import (
 )
 
 func routes() {
-  web.Post("/", paste)
+  web.Post("/", paste) //Defined in paste.go
   web.Get("/", index)
-}
-
-func paste(ctx *web.Context) string {
-  return "Done."
 }
 
 func index(ctx *web.Context) string {

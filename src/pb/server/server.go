@@ -5,6 +5,6 @@ import (
 )
 
 func Start() {
-  routes()
+  routes() //defined in routes.go
   web.Run("0.0.0.0:8080")
 }
