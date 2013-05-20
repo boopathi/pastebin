@@ -8,7 +8,11 @@ import (
 
 func paste(ctx *web.Context) string {
   var store redis.Client
+  err := store.Set("hello", []byte("world"))
+  if err != nil {
+    return mustache.Render("Database Error.")
+  }
   ctx.SetHeader("X-Powered-By","web.go",true)
   ctx.SetHeader("Connection", "close",true)
-  return "URI: 82j8928"
+  return mustache.Render("Done")
 }
