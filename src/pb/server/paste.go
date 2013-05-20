@@ -54,6 +54,7 @@ func getPaste(ctx *web.Context, uri string) string {
 	}
 	y := "paste_" + uri
 	x, err := redis.String(c.Do("GET", y))
+	ctx.SetHeader("Content-Type", "text/plain", true)
 	ctx.SetHeader("X-Powered-By", "web.go", true)
 	ctx.SetHeader("Connection", "close", true)
 	return mustache.Render(x)
