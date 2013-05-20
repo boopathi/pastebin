@@ -4,6 +4,3 @@
 [submodule "src/pb/mustache"]
 	path = src/pb/mustache
 	url = git://github.com/hoisie/mustache.git
-[submodule "src/pb/redis"]
-	path = src/pb/redis
-	url = git://github.com/hoisie/redis.git
