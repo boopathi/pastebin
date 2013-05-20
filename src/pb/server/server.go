@@ -1,10 +1,20 @@
 package server
 
 import (
-  "pb/web"
+	"fmt"
+	"pb/web"
 )
 
 func Start() {
-  routes() //defined in routes.go
-  web.Run("0.0.0.0:8080")
+	Log("Initializing Routes...")
+	routes() //defined in routes.go
+	Log("Starting server...")
+	web.Run("0.0.0.0:8080")
+}
+
+func Log(m interface{}) {
+	DEBUG := true
+	if DEBUG {
+		fmt.Println(m)
+	}
 }

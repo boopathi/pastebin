@@ -1,15 +1,16 @@
 package server
 
 import (
-  "pb/web"
-  "pb/mustache"
+	"pb/mustache"
+	"pb/web"
 )
 
 func routes() {
-  web.Post("/", paste) //Defined in paste.go
-  web.Get("/", index)
+	web.Post("/", paste) //Defined in paste.go
+	web.Get("/(.*)", getPaste)
+	web.Get("/", index)
 }
 
 func index(ctx *web.Context) string {
-  return mustache.RenderFile("templates/index.html")
+	return mustache.RenderFile("templates/index.html")
 }
