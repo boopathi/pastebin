@@ -40,9 +40,10 @@ func paste(ctx *web.Context) string {
 		Log(err)
 		return mustache.Render("Cannot connect to DB \r\n")
 	}
-	y := "paste_" + rands(5)
+	rstr = rands(5)
+	y := "paste_" + rstr
 	c.Do("SET", y, ctx.Params["paste"])
-	return mustache.Render(y + "\n")
+	return mustache.Render(rstr + "\n")
 }
 
 func getPaste(ctx *web.Context, uri string) string {
