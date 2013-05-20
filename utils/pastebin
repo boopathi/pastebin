@@ -1,0 +1,42 @@
+#!/bin/sh
+
+LOGDIR=./log
+ACCESS_LOG=$LOGDIR/access.log
+ERROR_LOG=$LOGDIR/error.log
+
+port=80
+app='../bin/pb'
+
+start() {
+    mkdir -p $LOGDIR
+    nohup $app -p $port 1> $ACCESS_LOG 2> $ERROR_LOG &
+    pid=$!
+    echo $pid > /var/run/pb
+    return $?
+}
+
+stop() {
+    kill -9 `cat /var/run/pb`
+    return $?
+}
+
+restart() {
+    stop
+    start
+}
+
+case $1 in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    *)
+        echo "Usage $0 {start|stop|restart}"
+esac
+
+exit 0
