@@ -2,7 +2,7 @@ all:
 	git submodule init
 	git submodule update
 
-serve:
+install:
 	cd src/pb && go install
 	./utils/pastebin
 
