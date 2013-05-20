@@ -15,10 +15,17 @@
     <h1>pastebin</h1>
     <p>Hacker's Pastebin (curl to post your pastes)</p>
     <h2>Usage</h2>
+    <h3>Random URI</h3>
     <ul>
-      <li><code>cat SomeFile | curl -X POST --data-urlencode paste@- localhost:8080</code></li>
-      <li><code>curl -X POST --data-urlencode paste@myfile.txt localhost:8080</code></li>
-      <li><code>iostat | curl -X POST --data-urlencode paste@- localhost:8080</code></li>
+      <li>Send a <code>POST</code> or <code>PUT</code> request to paste.</li>
+      <li><code>cat SomeFile | curl -X PUT --data-urlencode paste@- localhost:8080</code></li>
+      <li><code>curl -X PUT --data-urlencode paste@myfile.txt localhost:8080</code></li>
+      <li><code>iostat | curl -X PUT --data-urlencode paste@- localhost:8080</code></li>
+    </ul>
+    <h3>Custom URI</h3>
+    <ul>
+      <li><code>-d name=customURI</code> is to be included</li>
+      <li><code>cat somefile | curl -X PUT --data-urlencode paste@- -d name=customURI localhost:8080</code></li>
     </ul>
     <h2>Installation</h2>
     <ul>

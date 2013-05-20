@@ -4,9 +4,17 @@ Hacker's Pastebin (curl to post your pastes)
 
 ## Usage
 
-+ `cat SomeFile | curl -X POST --data-urlencode paste@- localhost:8080`
-+ `curl -X POST --data-urlencode paste@myfile.txt localhost:8080`
-+ `iostat | curl -X POST --data-urlencode paste@- localhost:8080`
+### Random URI
+
++ Send a `POST` or `PUT` request to paste.
++ `cat SomeFile | curl -X PUT --data-urlencode paste@- localhost:8080`
++ `curl -X PUT --data-urlencode paste@myfile.txt localhost:8080`
++ `iostat | curl -X PUT --data-urlencode paste@- localhost:8080`
+
+### Custon URI
+
++ `-d name=customURI` is to be included
++ `cat somefile | curl -X PUT --data-urlencode paste@- -d name=customURI localhost:8080`
 
 ## Installation
 
