@@ -1,22 +1,23 @@
 #!/bin/sh
 
 LOGDIR=./log
+PIDFILE=./log/pb
 ACCESS_LOG=$LOGDIR/access.log
 ERROR_LOG=$LOGDIR/error.log
 
-port=80
-app='../bin/pb'
+port=5000
+app='./bin/pb'
 
 start() {
     mkdir -p $LOGDIR
     nohup $app -p $port 1> $ACCESS_LOG 2> $ERROR_LOG &
     pid=$!
-    echo $pid > /var/run/pb
+    echo $pid > $PIDFILE
     return $?
 }
 
 stop() {
-    kill -9 `cat /var/run/pb`
+    kill -9 `cat $PIDFILE`
     return $?
 }
 
