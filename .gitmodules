@@ -4,6 +4,6 @@
 [submodule "src/pb/mustache"]
 	path = src/pb/mustache
 	url = git://github.com/hoisie/mustache.git
-[submodule "src/pb/redis"]
-	path = src/pb/redis
-	url = git://github.com/garyburd/redigo/redis
+[submodule "src/pb/redigo"]
+	path = src/pb/redigo
+	url = git://github.com/garyburd/redigo.git
