@@ -44,8 +44,7 @@ func paste(ctx *web.Context) string {
 	defer c.Close()
 	rstr := rands(5)
 	if val, ok := ctx.Params["name"]; ok {
-		matched, _ := regexp.MatchString("[a-zA-Z0-9]+", val)
-		if matched {
+		if matched, _ := regexp.MatchString("[a-zA-Z0-9]+", val); matched {
 			rstr = val
 		}
 	}
@@ -62,9 +61,8 @@ func getPaste(ctx *web.Context, uri string) string {
 		return mustache.Render("Cannot connect to DB \r\n")
 	}
 	defer c.Close()
-	matched, _ := regexp.MatchString("[a-zA-Z0-9]+", uri)
 	y := "PASTE_DOES_NOT_EXIST"
-	if matched {
+	if matched, _ := regexp.MatchString("[a-zA-Z0-9]+", uri); matched {
 		y = "paste_" + uri
 	}
 	x, err := redis.String(c.Do("GET", y))
