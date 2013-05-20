@@ -6,6 +6,7 @@ import (
 	"pb/mustache"
 	"pb/redigo/redis"
 	"pb/web"
+	"regexp"
 )
 
 func rands(l int) string {
@@ -40,10 +41,18 @@ func paste(ctx *web.Context) string {
 		Log(err)
 		return mustache.Render("Cannot connect to DB \r\n")
 	}
+	defer c.Close()
 	rstr := rands(5)
+	if val, ok := ctx.Params["name"]; ok {
+		matched, _ := regexp.MatchString("[a-zA-Z0-9]+", val)
+		if matched {
+			rstr = val
+		}
+	}
 	y := "paste_" + rstr
 	c.Do("SET", y, ctx.Params["paste"])
-	return mustache.Render(rstr + "\n")
+	sname := "/" //"http://" + ctx.Server.Config.Addr + ":" + string(ctx.Server.Config.Port) + "/"
+	return mustache.Render(sname + rstr + "\n")
 }
 
 func getPaste(ctx *web.Context, uri string) string {
@@ -52,7 +61,12 @@ func getPaste(ctx *web.Context, uri string) string {
 		Log(err)
 		return mustache.Render("Cannot connect to DB \r\n")
 	}
-	y := "paste_" + uri
+	defer c.Close()
+	matched, _ := regexp.MatchString("[a-zA-Z0-9]+", uri)
+	y := "PASTE_DOES_NOT_EXIST"
+	if matched {
+		y = "paste_" + uri
+	}
 	x, err := redis.String(c.Do("GET", y))
 	ctx.SetHeader("Content-Type", "text/plain", true)
 	ctx.SetHeader("X-Powered-By", "web.go", true)
