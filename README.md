@@ -11,7 +11,7 @@ Hacker's Pastebin (curl to post your pastes)
 + `curl -X PUT --data-urlencode paste@myfile.txt localhost:8080`
 + `iostat | curl -X PUT --data-urlencode paste@- localhost:8080`
 
-### Custon URI
+### Custom URI
 
 + `-d name=customURI` is to be included
 + `cat somefile | curl -X PUT --data-urlencode paste@- -d name=customURI localhost:8080`
