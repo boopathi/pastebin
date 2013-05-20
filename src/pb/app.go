@@ -1,9 +1,9 @@
 package main
 
 import (
-  "pb/server"
+	"pb/server"
 )
 
 func main() {
-  server.Start()
+	server.Start()
 }

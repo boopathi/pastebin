@@ -1,14 +1,18 @@
 package server
 
 import (
+	"flag"
 	"fmt"
 	"pb/redigo/redis"
 	"pb/web"
+	"strconv"
 )
 
 func Start() {
+
 	Log("Initializing Routes...")
 	routes() //defined in routes.go
+
 	Log("Connecting to Redis Store")
 	c, err := redis.Dial("tcp", "localhost:6379")
 	if err != nil {
@@ -16,8 +20,12 @@ func Start() {
 		return
 	}
 	defer c.Close()
+
 	Log("Starting server...")
-	web.Run("0.0.0.0:8080")
+	var port int
+	flag.IntVar(&port, "p", 8080, "Port number")
+	flag.Parse()
+	web.Run("0.0.0.0:" + strconv.Itoa(port))
 }
 
 func Log(m interface{}) {
