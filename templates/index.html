@@ -1,9 +1,14 @@
 <!doctype html>
 <html>
-  <head>
-  <title>Hacker's pastebin</title>
-  </head>
-  <body>
-    Usage: cat somefile | curl -F "paste=<-" http://<URL>/
-  </body>
+<head><title>Hacker's Pastebin</title></head>
+<body>
+<h1>pastebin</h1>
+<p>Hacker's Pastebin (curl to post your pastes)</p>
+<h1>Usage</h1>
+<ul>
+<li><code>cat SomeFile | curl -X POST --data-urlencode paste@- localhost:8080</code></li>
+<li><code>curl -X POST --data-urlencode paste@myfile.txt localhost:8080</code></li>
+<li><code>iostat | curl -X POST --data-urlencode paste@- localhost:8080</code></li>
+</ul>
+</body>
 </html>
