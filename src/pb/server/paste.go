@@ -40,7 +40,7 @@ func paste(ctx *web.Context) string {
 		Log(err)
 		return mustache.Render("Cannot connect to DB \r\n")
 	}
-	y := rands(5)
+	y := "paste_" + rands(5)
 	c.Do("SET", y, ctx.Params["paste"])
 	return mustache.Render(y + "\n")
 }
@@ -51,7 +51,8 @@ func getPaste(ctx *web.Context, uri string) string {
 		Log(err)
 		return mustache.Render("Cannot connect to DB \r\n")
 	}
-	x, err := redis.String(c.Do("GET", uri))
+	y := "paste_" + uri
+	x, err := redis.String(c.Do("GET", y))
 	ctx.SetHeader("X-Powered-By", "web.go", true)
 	ctx.SetHeader("Connection", "close", true)
 	return mustache.Render(x)

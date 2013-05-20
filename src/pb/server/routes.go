@@ -7,7 +7,7 @@ import (
 
 func routes() {
 	web.Post("/", paste) //Defined in paste.go
-	web.Get("/(.*)", getPaste)
+	web.Get("/([a-zA-Z0-9]+)", getPaste)
 	web.Get("/", index)
 }
 
