@@ -32,3 +32,4 @@ Hacker's Pastebin (curl to post your pastes)
 ## Contributing
 
 + Clone the repository, make changes and `make install && ./bin/pb` to re-compile the source and run the server
+
