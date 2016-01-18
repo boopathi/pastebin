@@ -2,10 +2,10 @@ package server
 
 import (
 	"crypto/rand"
-	"io"
-	"github.com/hoisie/mustache"
 	"github.com/garyburd/redigo/redis"
+	"github.com/hoisie/mustache"
 	"github.com/hoisie/web"
+	"io"
 	"regexp"
 )
 
