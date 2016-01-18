@@ -33,3 +33,6 @@ Hacker's Pastebin (curl to post your pastes)
 
 + Clone the repository, make changes and `make install && ./bin/pb` to re-compile the source and run the server
 
+## LICENSE
+
+http://boopathi.mit-license.org/

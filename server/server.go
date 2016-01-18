@@ -3,8 +3,8 @@ package server
 import (
 	"flag"
 	"fmt"
-	"pb/redigo/redis"
-	"pb/web"
+	"github.com/garyburd/redigo/redis"
+	"github.com/hoisie/web"
 	"strconv"
 )
 

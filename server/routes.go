@@ -1,8 +1,8 @@
 package server
 
 import (
-	"pb/mustache"
-	"pb/web"
+	"github.com/hoisie/mustache"
+	"github.com/hoisie/web"
 )
 
 func routes() {

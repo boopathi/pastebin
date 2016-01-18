@@ -1,7 +1,7 @@
 package main
 
 import (
-	"pb/server"
+	"github.com/boopathi/pastebin/server"
 )
 
 func main() {

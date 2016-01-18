@@ -3,9 +3,9 @@ package server
 import (
 	"crypto/rand"
 	"io"
-	"pb/mustache"
-	"pb/redigo/redis"
-	"pb/web"
+	"github.com/hoisie/mustache"
+	"github.com/garyburd/redigo/redis"
+	"github.com/hoisie/web"
 	"regexp"
 )
 
